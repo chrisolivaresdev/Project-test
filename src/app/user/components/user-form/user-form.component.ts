@@ -70,7 +70,12 @@ export class UserFormComponent implements OnInit {
 
     } else {
 
-      this.userForm.controls['id'].setValue( this.userStorage[this.userStorage.length -1].id + 1 )
+      if(this.userStorage.length === 0) {
+        this.userForm.controls['id'].setValue(1)
+      } else {
+        this.userForm.controls['id'].setValue( this.userStorage[this.userStorage.length -1].id + 1 )
+      }
+
       this.userStorage.push(this.userForm.value)
       localStorage.setItem('user', JSON.stringify(this.userStorage))
       this.userForm.reset()

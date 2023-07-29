@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
   }
 
   changeLanguage(lang: string) {
-    console.log("cambiando")
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
   }

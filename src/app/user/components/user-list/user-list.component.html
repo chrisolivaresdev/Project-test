@@ -1,0 +1,18 @@
+<app-spinner *ngIf="!users">
+
+</app-spinner>
+
+<div class="container p-3 d-flex justify-content-center animate__animated animate__fadeInLeft" *ngIf="users">
+  <button (click)="createUser()">
+    {{ 'create' | translate }}
+  </button>
+</div>
+
+<div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft" *ngIf="users">
+  <ng-container *ngFor="let user of users" >
+      <app-card [user]="user"  (DeleteUserById)="DeleteUserById($event)"></app-card>
+  </ng-container>
+</div>
+
+
+

@@ -1,0 +1,47 @@
+
+  <div class="col-1 animate__animated animate__fadeInLeft">
+    <select class="form-control select-lang"
+    #selectedLang
+    (change)="changeLanguage(selectedLang.value)">
+    <option
+      *ngFor="let language of translate.getLangs()"
+      [value]="language"
+      [selected]="language === lang">
+      {{ language }}
+    </option>
+    </select>
+  </div>
+
+
+
+<div class="container d-flex flex-column justify-content-center align-items-center gap-2 animate__animated animate__fadeInLeft" style="height: 90vh;">
+    <h1 class="title"> {{ 'LogInCount' | translate }} </h1>
+
+    <form class="col-4 d-flex flex-column gap-2" [formGroup]="loginForm" (ngSubmit)="login()" >
+      <input type="text" class="form-control" placeholder="{{ 'name' | translate }}" formControlName="username" [ngClass]="{ 'invalid':
+      loginForm.controls['username'].invalid &&
+      loginForm.controls['username'].touched &&
+      loginForm.controls['username'].errors}">
+
+      <div *ngIf="
+      loginForm.controls['username'].invalid &&
+      loginForm.controls['username'].touched &&
+      loginForm.controls['username'].errors" style="color:red">
+      {{ 'required' | translate }}
+      </div>
+      <input type="password" class="form-control" placeholder="{{ 'password' | translate }}" formControlName="password" [ngClass]="{ 'invalid':
+      loginForm.controls['password'].invalid &&
+      loginForm.controls['password'].touched &&
+      loginForm.controls['password'].errors}">
+
+      <div *ngIf="
+      loginForm.controls['password'].invalid &&
+      loginForm.controls['password'].touched &&
+      loginForm.controls['password'].errors" style="color:red">
+      {{ 'required' | translate }}
+      </div>
+
+      <button type="submit" class="btn" [disabled]='loginForm.invalid' [ngClass]="{'btn-danger': loginForm.invalid, 'btn-primary' : loginForm.valid}">{{ 'logIn' | translate }}</button>
+    </form>
+
+  </div>

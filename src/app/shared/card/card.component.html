@@ -1,0 +1,14 @@
+  <div class="card">
+    <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" class="card-img-top" alt="Imagen 1">
+    <div class="card-body">
+      <h5 class="card-title">{{user.name}}</h5>
+      <p class="card-text">{{user.username}}</p>
+      <p class="card-text">{{user.email}}</p>
+      <a [href]="user.website" class="card-link" target="_blank">{{user.website}}</a>
+    </div>
+      <div class="card-icons">
+        <span class="edit-icon"><i class="fas fa-pencil-alt" (click)="editUser(user.id)"></i></span>
+        <span class="delete-icon"><i class="fas fa-trash-alt" (click)="deleteUser(user.id)"></i></span>
+    </div>
+  </div>
+
